@@ -21,7 +21,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBAction func loginButton(_ sender: Any) {
-        logoLabel.text="hi";
+
+        if (nameTextField.text == "") {
+            logoLabel.text = "sign up";
+            
+            
+            //DONT DO THIS FOR 
+            //TRANSITIONS THIS IS ASS. JUST LEARN
+            //HOW TO USE SEGUES AND SUCCEED WHERE
+            //I HAVE FAILED
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            
+            let SignUpController = storyBoard.instantiateViewController(withIdentifier: "signup") as UIViewController
+            
+            self.present(SignUpController, animated:true, completion:nil)
+
+
+        } else {
+            logoLabel.text = "sign in";
+        }
     }
     
     override func didReceiveMemoryWarning() {
