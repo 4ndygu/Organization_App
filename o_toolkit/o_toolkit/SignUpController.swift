@@ -14,7 +14,24 @@ class SignUpController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
+    @IBOutlet weak var userTextField: UITextField!
+    @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var mailTextField: UITextField!
         
+    @IBOutlet weak var submitButton: UIButton!
+    
+    @IBAction func submitButton(_ sender: Any) {
+        
+        let x = String(describing: mailTextField.text);
+        
+        if (x.utf16.count <= 12) {
+            // nah
+        }
+        
+        mailTextField.text = "hi";
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
