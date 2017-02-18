@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="800.79999999999995" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Table Controller-->
         <scene sceneID="eDH-vL-exx">
             <objects>
-                <viewController id="YM2-mf-NMj" sceneMemberID="viewController">
+                <viewController id="YM2-mf-NMj" customClass="TableController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IL1-sf-YdF"/>
                         <viewControllerLayoutGuide type="bottom" id="U9k-E3-P79"/>

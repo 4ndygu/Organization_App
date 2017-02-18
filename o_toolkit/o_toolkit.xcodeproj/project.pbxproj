@@ -16,6 +16,7 @@
 		3F26CCE91E59028D0016CFC8 /* o_toolkitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F26CCE81E59028D0016CFC8 /* o_toolkitTests.swift */; };
 		3F26CCF41E59028D0016CFC8 /* o_toolkitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F26CCF31E59028D0016CFC8 /* o_toolkitUITests.swift */; };
 		3F38D9671E590A8E00863AD9 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38D9661E590A8E00863AD9 /* SignUpController.swift */; };
+		3F38D9691E5916B700863AD9 /* TableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38D9681E5916B700863AD9 /* TableController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		3F26CCF31E59028D0016CFC8 /* o_toolkitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = o_toolkitUITests.swift; sourceTree = "<group>"; };
 		3F26CCF51E59028D0016CFC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F38D9661E590A8E00863AD9 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		3F38D9681E5916B700863AD9 /* TableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				3F26CCD01E59028D0016CFC8 /* AppDelegate.swift */,
 				3F26CCD21E59028D0016CFC8 /* ViewController.swift */,
 				3F38D9661E590A8E00863AD9 /* SignUpController.swift */,
+				3F38D9681E5916B700863AD9 /* TableController.swift */,
 				3F26CCD41E59028D0016CFC8 /* Main.storyboard */,
 				3F26CCDA1E59028D0016CFC8 /* Assets.xcassets */,
 				3F26CCDC1E59028D0016CFC8 /* LaunchScreen.storyboard */,
@@ -268,6 +271,7 @@
 				3F26CCD31E59028D0016CFC8 /* ViewController.swift in Sources */,
 				3F26CCD91E59028D0016CFC8 /* o_toolkit.xcdatamodeld in Sources */,
 				3F26CCD11E59028D0016CFC8 /* AppDelegate.swift in Sources */,
+				3F38D9691E5916B700863AD9 /* TableController.swift in Sources */,
 				3F38D9671E590A8E00863AD9 /* SignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
