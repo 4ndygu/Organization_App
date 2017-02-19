@@ -21,6 +21,7 @@ class ToolTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        self.tableView.delegate = self;
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +51,12 @@ class ToolTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        print(oddNumbers[row])
+        //CODE TO BE RUN ON CELL TOUCH
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

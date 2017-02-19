@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         if (nameTextField.text == "") {
             logoLabel.text = "sign up";
             
-            
             //DONT DO THIS FOR 
             //TRANSITIONS THIS IS ASS. JUST LEARN
             //HOW TO USE SEGUES AND SUCCEED WHERE
