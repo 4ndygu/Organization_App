@@ -29,6 +29,13 @@ class SignUpController: UIViewController {
         }
         
         mailTextField.text = "hi";
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+        
+        self.present(DashController, animated:true, completion:nil)
+
     }
     
     
