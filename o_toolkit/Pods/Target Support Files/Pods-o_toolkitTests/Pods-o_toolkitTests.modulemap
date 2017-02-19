@@ -1,0 +1,6 @@
+framework module Pods_o_toolkitTests {
+  umbrella header "Pods-o_toolkitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

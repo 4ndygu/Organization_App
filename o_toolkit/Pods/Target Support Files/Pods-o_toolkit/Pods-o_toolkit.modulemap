@@ -1,0 +1,6 @@
+framework module Pods_o_toolkit {
+  umbrella header "Pods-o_toolkit-umbrella.h"
+
+  export *
+  module * { export * }
+}
