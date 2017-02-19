@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class ViewController: UIViewController {
 
@@ -25,6 +25,11 @@ class ViewController: UIViewController {
 
         if (nameTextField.text == "") {
             logoLabel.text = "sign up";
+            
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            ref.child("users").child("1").setValue(["username": "paul"])
+            ref.child("users/adwa/username").setValue("eeeexxx")
             
             //DONT DO THIS FOR 
             //TRANSITIONS THIS IS ASS. JUST LEARN
