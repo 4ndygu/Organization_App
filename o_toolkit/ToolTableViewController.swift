@@ -55,6 +55,13 @@ class ToolTableViewController: UITableViewController {
         let row = indexPath.row
         print(oddNumbers[row])
         //CODE TO BE RUN ON CELL TOUCH
+        
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as UIViewController
+        
+        self.present(DashController, animated:true, completion:nil)
     }
 
 
