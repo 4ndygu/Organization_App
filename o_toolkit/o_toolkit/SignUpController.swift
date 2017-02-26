@@ -30,24 +30,25 @@ class SignUpController: UIViewController {
         }
         
         mailTextField.text = "hi";
-        
-        FIRAuth.auth()?.createUser(withEmail: userTextField.text!, password: passTextField.text!) { (user, err) in
+        let email = userTextField.text!;
+        let password = passTextField.text!;
+        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, err) in
             
             if err != nil {
                 
                 print(err)
                 
             } else {
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 
-                let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
-                
-                self.present(DashController, animated:true, completion:nil)
-
+                FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    
+                    let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+                    
+                    self.present(DashController, animated:true, completion:nil)
+                }
             }
-            
         }
-        
     }
     
     

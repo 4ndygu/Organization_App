@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import Firebase
 import GoogleMaps
 
 class ViewController: UIViewController {
@@ -36,6 +36,28 @@ class ViewController: UIViewController {
 //            ref.child("users/adwa/username").setValue("eeeexxx")
             //let user = User();
 
+
+            /* code for sign in
+             
+            let email = nameTextField.text!
+            let password = passTextField.text!
+            FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                if(error != nil)
+                {
+                    print(error)
+                }
+                else
+                {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                    let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+                
+                    self.present(DashController, animated:true, completion:nil)
+                }
+            }
+             
+             */
+            
             //DONT DO THIS FOR
             //TRANSITIONS THIS IS ASS. JUST LEARN
             //HOW TO USE SEGUES AND SUCCEED WHERE
