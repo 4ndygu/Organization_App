@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import Firebase
 class SignUpController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print("gothere")
     }
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
@@ -30,12 +31,23 @@ class SignUpController: UIViewController {
         
         mailTextField.text = "hi";
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
-        
-        self.present(DashController, animated:true, completion:nil)
+        FIRAuth.auth()?.createUser(withEmail: userTextField.text!, password: passTextField.text!) { (user, err) in
+            
+            if err != nil {
+                
+                print(err)
+                
+            } else {
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+                
+                self.present(DashController, animated:true, completion:nil)
 
+            }
+            
+        }
+        
     }
     
     

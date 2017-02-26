@@ -21,6 +21,7 @@
 		3F38D9671E590A8E00863AD9 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38D9661E590A8E00863AD9 /* SignUpController.swift */; };
 		3F38D96B1E591C8800863AD9 /* ToolTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F38D96A1E591C8800863AD9 /* ToolTableViewController.swift */; };
 		3F38D96D1E5921CB00863AD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F38D96C1E5921CB00863AD9 /* GoogleService-Info.plist */; };
+		3F4818781E624C8700BEE62F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4818771E624C8700BEE62F /* User.swift */; };
 		571F386C9822B6F695C38E01 /* Pods_o_toolkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FACB5C148F48A84CFF85F318 /* Pods_o_toolkit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		3F38D9661E590A8E00863AD9 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		3F38D96A1E591C8800863AD9 /* ToolTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolTableViewController.swift; path = ../ToolTableViewController.swift; sourceTree = "<group>"; };
 		3F38D96C1E5921CB00863AD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3F4818771E624C8700BEE62F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		71680B4A45E31F5ACF266A39 /* Pods-o_toolkitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o_toolkitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-o_toolkitTests/Pods-o_toolkitTests.release.xcconfig"; sourceTree = "<group>"; };
 		886F2ED27098D4963E9D8341 /* Pods_o_toolkitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_o_toolkitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC5FAABB1D93FC299ABF5BAD /* Pods-o_toolkit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-o_toolkit.release.xcconfig"; path = "Pods/Target Support Files/Pods-o_toolkit/Pods-o_toolkit.release.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				3F26CCDF1E59028D0016CFC8 /* Info.plist */,
 				3F38D96C1E5921CB00863AD9 /* GoogleService-Info.plist */,
 				3F26CCD71E59028D0016CFC8 /* o_toolkit.xcdatamodeld */,
+				3F4818771E624C8700BEE62F /* User.swift */,
 			);
 			path = o_toolkit;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				3F26CCD11E59028D0016CFC8 /* AppDelegate.swift in Sources */,
 				3F38D96B1E591C8800863AD9 /* ToolTableViewController.swift in Sources */,
 				3F38D9671E590A8E00863AD9 /* SignUpController.swift in Sources */,
+				3F4818781E624C8700BEE62F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
