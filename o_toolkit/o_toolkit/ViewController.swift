@@ -27,13 +27,13 @@ class ViewController: UIViewController {
     
     @IBAction func loginButton(_ sender: Any) {
 
-        if (nameTextField.text == "") {
+        if (nameTextField.text == "" && passTextField.text == "") {
             logoLabel.text = "sign up";
             
             var ref: FIRDatabaseReference!
             ref = FIRDatabase.database().reference()
-            ref.child("users").child("1").setValue(["username": "paul"])
-            ref.child("users/adwa/username").setValue("eeeexxx")
+//            ref.child("users").child("1").setValue(["username": "paul"])
+//            ref.child("users/adwa/username").setValue("eeeexxx")
 //            let user = User();
 
 
@@ -63,14 +63,33 @@ class ViewController: UIViewController {
             //HOW TO USE SEGUES AND SUCCEED WHERE
             //I HAVE FAILED
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-            
+
             let SignUpController = storyBoard.instantiateViewController(withIdentifier: "signup") as UIViewController
             
             self.present(SignUpController, animated:true, completion:nil)
 
 
         } else {
-            logoLabel.text = "sign in";
+            
+            let email = nameTextField.text!;
+            let password = passTextField.text!;
+
+            print(email)
+            print(password)
+            FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                
+                print(user)
+                if (user == nil) {
+                    self.loginButton.setTitle("Wrong Credentials!", for: .normal);
+                    return
+                }
+                
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                
+                let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+                
+                self.present(DashController, animated:true, completion:nil)
+            }
         }
     }
     

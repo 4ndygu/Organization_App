@@ -13,12 +13,10 @@ class ToolTableViewController: UITableViewController {
 
     var ref: FIRDatabaseReference!
     
-    // let oddNumbers = [];
+    let oddNumbers = [String]();
     
     func loadOddNumbers()  {
         
-        
-        let oddNumbers = [String]()
         ref = FIRDatabase.database().reference()
         
         ref = ref.child("actions")

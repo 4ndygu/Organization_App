@@ -18,7 +18,7 @@ class SignUpController: UIViewController {
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var mailTextField: UITextField!
-        
+    
     @IBOutlet weak var submitButton: UIButton!
     
     @IBAction func submitButton(_ sender: Any) {
@@ -29,8 +29,7 @@ class SignUpController: UIViewController {
             // nah
         }
         
-        mailTextField.text = "hi";
-        let email = userTextField.text!;
+        let email = mailTextField.text!;
         let password = passTextField.text!;
         FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, err) in
             
