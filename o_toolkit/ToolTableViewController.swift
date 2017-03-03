@@ -7,18 +7,41 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class ToolTableViewController: UITableViewController {
 
+    var ref: FIRDatabaseReference!
     
-    let oddNumbers = ["asdfasdf", "fdasfadf"];
+    // let oddNumbers = [];
+    
+    func loadOddNumbers()  {
+        
+        
+        let oddNumbers = [String]()
+        ref = FIRDatabase.database().reference()
+        
+        ref = ref.child("actions")
+        
+        ref.observeSingleEvent(of: .value, with: {
+            snapshot in
+            print(snapshot.value as Any)
+            //                oddNumbers.append(snapshot.value as String)
+        })
+        
+        
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
+        loadOddNumbers();
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.delegate = self;
