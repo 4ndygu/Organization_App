@@ -30,11 +30,11 @@ class ViewController: UIViewController {
         if (nameTextField.text == "") {
             logoLabel.text = "sign up";
             
-//            var ref: FIRDatabaseReference!
-//            ref = FIRDatabase.database().reference()
-//            ref.child("users").child("1").setValue(["username": "paul"])
-//            ref.child("users/adwa/username").setValue("eeeexxx")
-            //let user = User();
+            var ref: FIRDatabaseReference!
+            ref = FIRDatabase.database().reference()
+            ref.child("users").child("1").setValue(["username": "paul"])
+            ref.child("users/adwa/username").setValue("eeeexxx")
+//            let user = User();
 
 
             /* code for sign in
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
                 }
             }
              
-             */
+ */
             
             //DONT DO THIS FOR
             //TRANSITIONS THIS IS ASS. JUST LEARN
