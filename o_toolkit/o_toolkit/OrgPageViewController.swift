@@ -10,7 +10,11 @@ import UIKit
 import GoogleMaps
 
 class OrgPageViewController: UIViewController {
+    
+    var actiontitle: String = "";
 
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapViewHolder: GMSMapView!
     
     override func viewDidLoad() {
@@ -18,8 +22,10 @@ class OrgPageViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 12)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         self.mapViewHolder = mapView
-
+        
+        titleLabel.text = actiontitle
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {

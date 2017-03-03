@@ -84,8 +84,9 @@ class ToolTableViewController: UITableViewController {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as UIViewController
+        let DashController : OrgPageViewController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! OrgPageViewController
         
+        DashController.actiontitle = oddNumbers[indexPath.row]
         self.present(DashController, animated:true, completion:nil)
     }
 
@@ -125,14 +126,16 @@ class ToolTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    }
-    */
+           }
+    
+    
+    
 
 }
