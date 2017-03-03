@@ -13,7 +13,7 @@ class ToolTableViewController: UITableViewController {
 
     var ref: FIRDatabaseReference!
     
-    let oddNumbers = [String]();
+    var oddNumbers = ["asdf"];
     
     func loadOddNumbers()  {
         
@@ -23,13 +23,16 @@ class ToolTableViewController: UITableViewController {
         
         ref.observeSingleEvent(of: .value, with: {
             snapshot in
-            print(snapshot.value as Any)
-            //                oddNumbers.append(snapshot.value as String)
+            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                //let title = rest.value!["title"] as? String
+                let title = rest.childSnapshot(forPath: "title").value as? String
+                self.oddNumbers.append(title!)
+            }
+            
+            DispatchQueue.main.async{
+                self.tableView.reloadData()
+            }
         })
-        
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -39,6 +42,8 @@ class ToolTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         loadOddNumbers();
+        
+        print(oddNumbers);
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -76,7 +81,6 @@ class ToolTableViewController: UITableViewController {
         let row = indexPath.row
         print(oddNumbers[row])
         //CODE TO BE RUN ON CELL TOUCH
-        
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
