@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
+
 
 class OrgPageViewController: UIViewController {
     
@@ -16,6 +18,27 @@ class OrgPageViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapViewHolder: GMSMapView!
+    @IBOutlet weak var DonateButton: UIButton!
+    
+    @IBAction func DonateButtonTouch(_ sender: Any) {
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "donatepage") as UIViewController
+        
+        self.present(DashController, animated:true, completion:nil)
+
+    }
+
+    @IBAction func FollowButtonTouch(_ sender: Any) {
+        var ref = FIRDatabase.database().reference()
+        //update user on creation into users table
+        ref = ref.child("users")
+        ref = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
+        let newFollowRef = ref.child(titleLabel.text!) //lowercase should be UID
+        newFollowRef.setValue(titleLabel.text)
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

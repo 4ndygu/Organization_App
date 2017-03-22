@@ -209,11 +209,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
-                                <rect key="frame" x="165" y="571" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Follow"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kC5-pn-asO" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -233,6 +228,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fLu-Di-YZW">
+                                <rect key="frame" x="165" y="533" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Donate"/>
+                                <connections>
+                                    <action selector="DonateButtonTouch:" destination="FQM-4U-6HA" eventType="touchUpInside" id="Iw6-At-kFw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
+                                <rect key="frame" x="165" y="571" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="FollowButtonTouch:" destination="FQM-4U-6HA" eventType="touchUpInside" id="DfA-Fv-drn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -244,6 +255,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="DonateButton" destination="fLu-Di-YZW" id="jtV-DA-PVb"/>
                         <outlet property="descriptionLabel" destination="vWW-De-vyB" id="rIR-GJ-e6N"/>
                         <outlet property="mapViewHolder" destination="kC5-pn-asO" id="zgx-aa-VRZ"/>
                         <outlet property="titleLabel" destination="uK9-um-wRL" id="9ee-UJ-jV3"/>
@@ -269,6 +281,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCj-7k-qdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="801" y="767"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EWX-g5-Op8">
@@ -286,6 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evQ-2q-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="137" y="767"/>
         </scene>
         <!--Add Event View Controller-->
         <scene sceneID="tru-UU-oPN">
@@ -407,48 +421,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLx-oH-Pad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2097" y="806"/>
+            <point key="canvasLocation" x="1513" y="767"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="gPP-Qy-Eb5">
+        <!--Donate Controller-->
+        <scene sceneID="oEI-ff-ogz">
             <objects>
-                <navigationController storyboardIdentifier="maindash" automaticallyAdjustsScrollViewInsets="NO" id="tPH-Eh-eOE" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7lo-rs-r0M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                <viewController storyboardIdentifier="donatepage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mkm-p0-kdy" customClass="DonateController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="waQ-sc-3Pj"/>
+                        <viewControllerLayoutGuide type="bottom" id="0sn-Gu-hqx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2gM-Bh-Hxq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="500" translatesAutoresizingMaskIntoConstraints="NO" id="OJ0-6c-ay5">
+                                <rect key="frame" x="71" y="219" width="233" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="donateSliderChanged:" destination="mkm-p0-kdy" eventType="valueChanged" id="4Qp-T7-ylJ"/>
+                                </connections>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thanks for helping us out!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbJ-iI-mQa">
+                                <rect key="frame" x="88" y="143" width="199" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cit-Tb-KGT">
+                                <rect key="frame" x="172" y="302" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Pay"/>
+                                <connections>
+                                    <action selector="payButton:" destination="mkm-p0-kdy" eventType="touchUpInside" id="10G-U7-nmc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount: 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ocG-Lw-uXt">
+                                <rect key="frame" x="142" y="257" width="128" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                     <connections>
-                        <segue destination="wUS-YG-W2d" kind="relationship" relationship="rootViewController" id="fWw-vQ-PuJ"/>
+                        <outlet property="donateMoney" destination="ocG-Lw-uXt" id="mT9-Kt-yZM"/>
+                        <outlet property="donateSlider" destination="OJ0-6c-ay5" id="B2J-ed-XQ8"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Yy6-t9-dyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NMY-0u-k6F">
-                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                </button>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gy9-RN-Lvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2160.8000000000002" y="766.86656671664173"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="xSu-tZ-Lrh">
+        <!--View Controller-->
+        <scene sceneID="kKZ-BG-7aW">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EIq-M5-ouM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController storyboardIdentifier="orgpage" automaticallyAdjustsScrollViewInsets="NO" id="Cfx-xf-xNp" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1HW-mm-zUW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="FQM-4U-6HA" kind="relationship" relationship="rootViewController" id="cAM-C4-SRf"/>
-                    </connections>
-                </navigationController>
+                <viewController id="1ed-yZ-GOe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fyO-A8-lbT"/>
+                        <viewControllerLayoutGuide type="bottom" id="pdX-ba-oWn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KXu-VF-ESZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lux-dn-8jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3143.1999999999998" y="138.98050974512745"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
