@@ -8,6 +8,8 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
+
 
 class OrgPageViewController: UIViewController {
     
@@ -26,6 +28,17 @@ class OrgPageViewController: UIViewController {
         self.present(DashController, animated:true, completion:nil)
 
     }
+
+    @IBAction func FollowButtonTouch(_ sender: Any) {
+        var ref = FIRDatabase.database().reference()
+        //update user on creation into users table
+        ref = ref.child("users")
+        ref = ref.child((FIRAuth.auth()?.currentUser?.uid)!)
+        let newFollowRef = ref.child(titleLabel.text!) //lowercase should be UID
+        newFollowRef.setValue(titleLabel.text)
+
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

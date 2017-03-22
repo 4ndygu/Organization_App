@@ -202,11 +202,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
-                                <rect key="frame" x="165" y="571" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Follow"/>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kC5-pn-asO" customClass="GMSMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -234,6 +229,14 @@
                                     <action selector="DonateButtonTouch:" destination="FQM-4U-6HA" eventType="touchUpInside" id="Iw6-At-kFw"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
+                                <rect key="frame" x="165" y="571" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Follow"/>
+                                <connections>
+                                    <action selector="FollowButtonTouch:" destination="FQM-4U-6HA" eventType="touchUpInside" id="DfA-Fv-drn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -251,7 +254,6 @@
         <!--View Controller-->
         <scene sceneID="HFq-lo-3bg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gCj-7k-qdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CIE-nF-PUP" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iLh-r8-GeG"/>
@@ -263,13 +265,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCj-7k-qdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="801" y="767"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="EWX-g5-Op8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="evQ-2q-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="TJX-9Z-p9f" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vyq-vg-wbp"/>
@@ -281,6 +283,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="evQ-2q-ocV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137" y="767"/>
         </scene>
