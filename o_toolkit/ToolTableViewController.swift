@@ -35,6 +35,7 @@ class ToolTableViewController: UITableViewController {
         })
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,12 +85,15 @@ class ToolTableViewController: UITableViewController {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let DashController : OrgPageViewController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! OrgPageViewController
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage")
         
-        DashController.actiontitle = oddNumbers[indexPath.row]
+        //DashController.actiontitle = oddNumbers[indexPath.row]
         self.present(DashController, animated:true, completion:nil)
     }
 
+    @IBAction func addEvent(segue:UIStoryboardSegue) {
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

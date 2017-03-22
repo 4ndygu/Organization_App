@@ -86,7 +86,7 @@ class ViewController: UIViewController {
                 
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                 
-                let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash") as! UITableViewController
+                let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash")
                 
                 self.present(DashController, animated:true, completion:nil)
             }

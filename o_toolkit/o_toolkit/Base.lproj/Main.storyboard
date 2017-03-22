@@ -145,12 +145,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="183-pp-CCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="133.5832083958021"/>
+            <point key="canvasLocation" x="726" y="221"/>
         </scene>
-        <!--Tool Table View Controller-->
+        <!--Events-->
         <scene sceneID="BEX-Rh-mg0">
             <objects>
-                <tableViewController storyboardIdentifier="maindash" id="wUS-YG-W2d" customClass="ToolTableViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="wUS-YG-W2d" customClass="ToolTableViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" id="BCm-M2-mWl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -171,15 +171,22 @@
                             <outlet property="delegate" destination="wUS-YG-W2d" id="g4q-WT-qSW"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Events" id="mtq-ZQ-hSw">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="iQ4-bV-hLE">
+                            <connections>
+                                <segue destination="x0g-JS-Si9" kind="presentation" id="IDl-mW-l4u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51N-Vl-3yg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="133.5832083958021"/>
+            <point key="canvasLocation" x="2452" y="133.5832083958021"/>
         </scene>
         <!--Org Page View Controller-->
         <scene sceneID="HiM-We-h1d">
             <objects>
-                <viewController storyboardIdentifier="orgpage" id="FQM-4U-6HA" customClass="OrgPageViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FQM-4U-6HA" customClass="OrgPageViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jkp-Qj-L2z"/>
                         <viewControllerLayoutGuide type="bottom" id="GVY-4K-q2L"/>
@@ -229,6 +236,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Bou-ov-uXd">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="St3-bq-C5L">
+                            <connections>
+                                <segue destination="tPH-Eh-eOE" kind="show" id="xZr-fV-MUD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionLabel" destination="vWW-De-vyB" id="rIR-GJ-e6N"/>
                         <outlet property="mapViewHolder" destination="kC5-pn-asO" id="zgx-aa-VRZ"/>
@@ -237,7 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nWw-cp-KRV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2204" y="138.98050974512745"/>
+            <point key="canvasLocation" x="4082.4000000000001" y="138.98050974512745"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HFq-lo-3bg">
@@ -349,14 +363,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9K-UJ-qok">
-                                <rect key="frame" x="162" y="533" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Submit"/>
-                                <connections>
-                                    <action selector="AddEvent:" destination="x0g-JS-Si9" eventType="touchUpInside" id="Hm0-kZ-b1j"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2z-R5-IZg">
                                 <rect key="frame" x="125" y="196" width="197" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -371,6 +377,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oGv-os-oBV">
+                                <rect key="frame" x="116" y="533" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <segue destination="tPH-Eh-eOE" kind="show" id="d4M-FJ-p88"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9K-UJ-qok">
+                                <rect key="frame" x="225" y="533" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="AddEvent:" destination="x0g-JS-Si9" eventType="touchUpInside" id="Hm0-kZ-b1j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -385,7 +407,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JLx-oH-Pad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1512.8" y="824.43778110944538"/>
+            <point key="canvasLocation" x="2097" y="806"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gPP-Qy-Eb5">
+            <objects>
+                <navigationController storyboardIdentifier="maindash" automaticallyAdjustsScrollViewInsets="NO" id="tPH-Eh-eOE" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7lo-rs-r0M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wUS-YG-W2d" kind="relationship" relationship="rootViewController" id="fWw-vQ-PuJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yy6-t9-dyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NMY-0u-k6F">
+                    <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Button"/>
+                </button>
+            </objects>
+            <point key="canvasLocation" x="1512.8" y="133.5832083958021"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xSu-tZ-Lrh">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIq-M5-ouM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="orgpage" automaticallyAdjustsScrollViewInsets="NO" id="Cfx-xf-xNp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1HW-mm-zUW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FQM-4U-6HA" kind="relationship" relationship="rootViewController" id="cAM-C4-SRf"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="3143.1999999999998" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="d4M-FJ-p88"/>
+    </inferredMetricsTieBreakers>
 </document>
