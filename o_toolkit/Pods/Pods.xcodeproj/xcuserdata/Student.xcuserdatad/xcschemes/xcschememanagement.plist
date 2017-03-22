@@ -4,6 +4,31 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Braintree-Braintree-Drop-In-Localization.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Braintree-Braintree-UI-Localization.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Braintree.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BraintreeDropIn-Braintree-UIKit-Localization.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>BraintreeDropIn.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,6 +67,21 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>312B3E952FE0D7D7ECFB3CFF8C2E6CD1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6790D628D80FD40ECFC593645BE6E552</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7F9C17EEF35B1512FDCE8283D7E6ACC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFD6F9DD3A2EF0228EAD942E41C0F438</key>
 		<dict>
 			<key>primary</key>
@@ -52,7 +92,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CAB3C58A69534F4229493855C90A7893</key>
+		<key>C1684BFC91DA2C5B06F236419A4A91BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D3BAA6AADB7E1A48083310F048C18905</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA4AD1551F810C38B893E73D65768D9B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
