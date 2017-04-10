@@ -40,6 +40,14 @@ class SignUpController: UIViewController {
             } else {
                 
                 FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                    //on signup, add db entry
+                    var ref: FIRDatabaseReference!
+                    ref = FIRDatabase.database().reference()
+                    let userID = FIRAuth.auth()?.currentUser?.uid
+
+                    ref.child("users").child(userID!).setValue(["donttouch": "0"])
+
+                    
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
                     let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash")
