@@ -1,4 +1,37 @@
 PODS:
+  - Braintree (4.8.1):
+    - Braintree/Card (= 4.8.1)
+    - Braintree/Core (= 4.8.1)
+    - Braintree/PayPal (= 4.8.1)
+    - Braintree/UI (= 4.8.1)
+  - Braintree/Card (4.8.1):
+    - Braintree/Core
+  - Braintree/Core (4.8.1)
+  - Braintree/PayPal (4.8.1):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.8.1):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.8.1):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.8.1)
+  - Braintree/UI (4.8.1):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/UnionPay (4.8.1):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (5.2.0):
+    - BraintreeDropIn/DropIn (= 5.2.0)
+  - BraintreeDropIn/DropIn (5.2.0):
+    - Braintree/Card (~> 4.0)
+    - Braintree/Core (~> 4.0)
+    - Braintree/UnionPay (~> 4.0)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (5.2.0)
   - Firebase/Auth (3.14.0):
     - Firebase/Core
     - FirebaseAuth (= 3.1.1)
@@ -41,6 +74,8 @@ PODS:
   - GTMSessionFetcher/Core (1.1.8)
 
 DEPENDENCIES:
+  - Braintree
+  - BraintreeDropIn
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -48,6 +83,8 @@ DEPENDENCIES:
   - GooglePlaces
 
 SPEC CHECKSUMS:
+  Braintree: 9e63eeb60d34f54fa1aa8f3d75fe3976927c06d5
+  BraintreeDropIn: f4278c4eafc1395d06ce79652fa1658d2b5ab815
   Firebase: 85a581fb04e44f63ae9f4fbc8d6dabf4a4c18653
   FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
   FirebaseAuth: cc8a1824170adbd351edb7f994490a3fb5c18be6
@@ -59,6 +96,6 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
 
-PODFILE CHECKSUM: e33fd4f2bca3ce14239730fa58d8e23821a42a70
+PODFILE CHECKSUM: 4701232f31245cb563b1810249555da7eb3a60f1
 
 COCOAPODS: 1.2.0

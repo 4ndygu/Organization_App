@@ -3,6 +3,7 @@
 #import "BTDropInController.h"
 #import "BTDropInPaymentSeletionCell.h"
 #import "BTAPIClient_Internal_Category.h"
+#import "BTUIKBarButtonItem_Internal_Declaration.h"
 
 #if __has_include("BraintreeUIKit.h")
 #import "BraintreeUIKit.h"
@@ -59,7 +60,8 @@
     [super viewDidLoad];
     self.view.translatesAutoresizingMaskIntoConstraints = NO;
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:BTUIKLocalizedString(CANCEL_ACTION) style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.leftBarButtonItem = [[BTUIKBarButtonItem alloc] initWithTitle:BTUIKLocalizedString(CANCEL_ACTION) style:UIBarButtonItemStylePlain target:nil action:nil];
+
     self.title = BTUIKLocalizedString(SELECT_PAYMENT_LABEL);
     
     self.view.translatesAutoresizingMaskIntoConstraints = false;
@@ -164,7 +166,7 @@
 }
 
 - (void)loadConfiguration {
-    [self showLoadingScreen:YES animated:NO];
+    [self showLoadingScreen:YES];
     self.stackView.hidden = YES;
     [super loadConfiguration];
     
@@ -217,7 +219,7 @@
             BTJSON *applePayConfiguration = self.configuration.json[@"applePay"];
             if ([applePayConfiguration[@"status"] isString] && ![[applePayConfiguration[@"status"] asString] isEqualToString:@"off"] && !self.dropInRequest.applePayDisabled) {
                 // Short-circuits if BraintreeApplePay is not available at runtime
-                if (__BT_AVAILABLE(@"BTApplePayClient") && [configuration canMakeApplePayPayments]) {
+                if (__BT_AVAILABLE(@"BTApplePayClient")) {
                     [activePaymentOptions addObject:@(BTUIKPaymentOptionTypeApplePay)];
                 }
             }
@@ -238,7 +240,7 @@
                 self.vaultedPaymentsLabelContainerStackView.hidden = NO;
                 [self.savedPaymentMethodsCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:([BTUIKViewUtil isLanguageLayoutDirectionRightToLeft] ? UICollectionViewScrollPositionLeft : UICollectionViewScrollPositionRight) animated:NO];
             }
-            [self showLoadingScreen:NO animated:YES];
+            [self showLoadingScreen:NO];
             self.stackView.hidden = NO;
             [self.view layoutIfNeeded];
             if (self.delegate) {
