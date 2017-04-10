@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 
 class OrgPageViewController: UIViewController {
     
@@ -18,16 +19,31 @@ class OrgPageViewController: UIViewController {
     @IBOutlet weak var mapViewHolder: GMSMapView!
     
     @IBOutlet weak var donateButton: UIButton!
+    @IBOutlet weak var followButton: UIButton!
     
     @IBAction func donateButtonPushed(_ sender: Any) {
         print("ASFADFASDFADSF")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
+
         let DonateController = storyBoard.instantiateViewController(withIdentifier: "donateView") as UIViewController
         
         self.present(DonateController, animated:true, completion:nil)
     }
     
+
+    @IBAction func followButtonPushed(_ sender: Any) {
+        
+   
+        var ref = FIRDatabase.database().reference()
+        
+        let userRefId = FIRAuth.auth()?.currentUser?.uid
+        
+        var eventTitle = titleLabel.text
+        
+        ref.child("users").child(userRefId!).childByAutoId().setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString]) 
+        
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
