@@ -22,7 +22,7 @@
 #import <BraintreeUnionPay/BraintreeUnionPay.h>
 #endif
 
-@interface BTCardFormViewController ()
+@interface BTCardFormViewController () <BTViewControllerPresentingDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *scrollViewContentWrapper;
@@ -144,7 +144,7 @@
                                                object:nil];
     [self setupForm];
     [self resetForm];
-    [self showLoadingScreen:YES animated:NO];
+    [self showLoadingScreen:YES];
     [self loadConfiguration];
     
     self.firstResponderFormField = self.cardNumberField;
@@ -261,7 +261,7 @@
 }
 
 - (void)configurationLoaded:(__unused BTConfiguration *)configuration error:(NSError *)error {
-    [self showLoadingScreen:NO animated:YES];
+    [self showLoadingScreen:NO];
     if (!error) {
         self.collapsed = YES;
         self.unionPayEnabledMerchant = NO;
@@ -447,6 +447,7 @@
 
 - (void)cancelTapped {
     [self hideKeyboard];
+    [self.delegate reloadDropInData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -550,18 +551,22 @@
 }
 
 - (void)cardNumberErrorHidden:(BOOL)hidden {
+    [self cardNumberErrorHidden:hidden errorString:BTUIKLocalizedString(VALID_CARD_ERROR_LABEL)];
+}
+
+- (void)cardNumberErrorHidden:(BOOL)hidden errorString:(NSString *)errorString {
     NSInteger indexOfCardNumberFormField = [self.stackView.arrangedSubviews indexOfObject:self.cardNumberField];
     if (indexOfCardNumberFormField != NSNotFound && !hidden) {
-        [self cardNumberErrorString:BTUIKLocalizedString(VALID_CARD_ERROR_LABEL)];
         [self.stackView insertArrangedSubview:self.cardNumberErrorView atIndex:indexOfCardNumberFormField + 1];
+        UILabel *errorLabel = self.cardNumberErrorView.arrangedSubviews.firstObject;
+        errorLabel.text = errorString;
+        errorLabel.accessibilityLabel = errorString;
+        errorLabel.accessibilityHint = BTUIKLocalizedString(REVIEW_AND_TRY_AGAIN);
+        UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification,
+                                        errorLabel);
     } else if (self.cardNumberErrorView.superview != nil && hidden) {
         [self.cardNumberErrorView removeFromSuperview];
     }
-}
-
-- (void)cardNumberErrorString:(NSString*)errorString {
-    UILabel* label = self.cardNumberErrorView.arrangedSubviews.firstObject;
-    label.text = errorString;
 }
 
 - (void)tokenizeCard {
@@ -601,7 +606,11 @@
                 options[BTTokenizationServiceNonceOption] = tokenizedCard.nonce;
 
                 [[BTTokenizationService sharedService] tokenizeType:@"ThreeDSecure" options:options withAPIClient:self.apiClient completion:^(BTPaymentMethodNonce * _Nullable tokenizedCard, NSError * _Nullable error) {
-                    [self.delegate cardTokenizationCompleted:tokenizedCard error:error sender:self];
+                    if (tokenizedCard || error) {
+                        [self.delegate cardTokenizationCompleted:tokenizedCard error:error sender:self];
+                    } else {
+                        [self cancelTapped];
+                    }
                 }];
 
             } else {
@@ -724,8 +733,7 @@
         }
     }
     if (!cardSupported) {
-        [self cardNumberErrorHidden:NO];
-        [self cardNumberErrorString:BTUIKLocalizedString(CARD_NOT_ACCEPTED_ERROR_LABEL)];
+        [self cardNumberErrorHidden:NO errorString:BTUIKLocalizedString(CARD_NOT_ACCEPTED_ERROR_LABEL)];
         return;
     }
     
@@ -799,6 +807,15 @@
 
 - (BOOL)textFieldShouldReturn:(__unused UITextField *)textField {
     return YES;
+}
+
+#pragma mark BTViewControllerPresentingDelegate
+- (void)paymentDriver:(__unused id)driver requestsPresentationOfViewController:(UIViewController *)viewController {
+    [self presentViewController:viewController animated:YES completion:nil];
+}
+
+- (void)paymentDriver:(__unused id)driver requestsDismissalOfViewController:(__unused UIViewController *)viewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

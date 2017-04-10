@@ -17,6 +17,18 @@ class OrgPageViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapViewHolder: GMSMapView!
     
+    @IBOutlet weak var donateButton: UIButton!
+    
+    @IBAction func donateButtonPushed(_ sender: Any) {
+        print("ASFADFASDFADSF")
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let DonateController = storyBoard.instantiateViewController(withIdentifier: "donateView") as UIViewController
+        
+        self.present(DonateController, animated:true, completion:nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 12)
