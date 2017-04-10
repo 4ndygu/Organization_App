@@ -11,8 +11,6 @@ target 'o_toolkit' do
   pod ‘Firebase/Auth’
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  pod 'Braintree'
-  pod 'BraintreeDropIn'
 
   target 'o_toolkitTests' do
     inherit! :search_paths
