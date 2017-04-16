@@ -7,27 +7,28 @@
 //
 
 import UIKit
-import FirebaseDatabase
+import Firebase
 
 class ToolTableViewController: UITableViewController {
 
     var ref: FIRDatabaseReference!
     
-    var oddNumbers = ["Followed Events"]
-    var keyToTitle = ["placeholder" : "thisisdumb"]
+    var oddNumbers = Dictionary<String,String>()
     
     func loadOddNumbers()  {
         
         ref = FIRDatabase.database().reference()
-        
-        ref = ref.child("actions")
+        let userRefId = FIRAuth.auth()?.currentUser?.uid
+
+        ref = ref.child("users").child(userRefId!).child("following")
         
         ref.observeSingleEvent(of: .value, with: {
             snapshot in
             for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                 //let title = rest.value!["title"] as? String
                 let title = rest.childSnapshot(forPath: "title").value as? String
-                self.oddNumbers.append(title!)
+                let key = rest.key as? String
+                self.oddNumbers[title!] = key!
             }
             
             DispatchQueue.main.async{
@@ -74,14 +75,15 @@ class ToolTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "protocell", for: indexPath)
         
         // Configure the cell...
-        let item = oddNumbers[indexPath.row]
-        cell.textLabel?.text = item;
+        //let item = oddNumbers[indexPath.row]
+        let key = Array(oddNumbers.keys)[indexPath.row] // or .first
+        
+        cell.textLabel?.text = key
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let row = indexPath.row
-        print(oddNumbers[row])
         //CODE TO BE RUN ON CELL TOUCH
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
