@@ -47,7 +47,12 @@ class AddEventViewController: UIViewController {
         let childUpdates = ["/actions/\(key)": post]
         ref.updateChildValues(childUpdates)
 
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "ToolTable") as! ToolTableViewController
+        
+        self.present(resultViewController, animated:true, completion:nil)
+
         
     }
 
