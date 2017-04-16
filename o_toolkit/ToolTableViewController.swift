@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ToolTableViewController: UITableViewController {
 
@@ -34,6 +35,18 @@ class ToolTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         })
+        
+//        let userRefId = FIRAuth.auth()?.currentUser?.uid
+//        var ref2 = FIRDatabase.database().reference().child("users").child(userRefId!).child("following")
+//        
+//        ref2.observe(.value, with: { snapshot in
+//            for child in snapshot.children {
+//                print("child ------")
+//                print(child)
+//                
+//            }
+//        })
+
     }
     
     
@@ -61,8 +74,13 @@ class ToolTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1;
+        return 2;
     }
+    
+    func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+        return "ASDF";
+    }
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -86,11 +104,10 @@ class ToolTableViewController: UITableViewController {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage")
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
+        let childViewController = DashController.topViewController as! OrgPageViewController
         
-        ref = FIRDatabase.database().reference()
-        
-        //DashController.actiontitle = oddNumbers[indexPath.row]
+        childViewController.actiontitle = oddNumbers[indexPath.row]
         self.present(DashController, animated:true, completion:nil)
     }
 
