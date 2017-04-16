@@ -54,7 +54,28 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let camera = GMSCameraPosition.camera(withLatitude: 1.285, longitude: 103.848, zoom: 12)
+
+//        var ref = FIRDatabase.database().reference()
+//
+//        var gps1 = "";
+//        var gps2 = "";
+//        
+//        // look for everything given ID
+//        ref.child("actions").queryOrdered(byChild: "title").queryStarting(atValue: actiontitle).observe(.value, with: { snapshot in
+//            for u in snapshot.children{
+//                
+//                gps1 = ((u as AnyObject).childSnapshot("start").value as? String)!;
+//                gps2 = ((u as AnyObject).childSnapshot("end").value as? String)!
+//                
+//            }
+//        })
+//        
+//        let gpsStartArr = gps1.componentsSeparatedByString(" ")
+//        var centerGPS = gpsStartArr[0];
+//        var centerGPS2 = gpsStartArr[1];
+
+        
+        let camera = GMSCameraPosition.camera(withLatitude: centerGPS, longitude: centerGPS2, zoom: 12)
         let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
         self.mapViewHolder = mapView
         
