@@ -10,10 +10,18 @@ import UIKit
 import GoogleMaps
 import Firebase
 
-class OrgPageViewController: UIViewController {
+class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var actiontitle: String = "";
 
+    // Data model: These strings will be the data for the table view cells
+    let animals: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
+    
+    // cell reuse id (cells that scroll out of view can be reused)
+    let cellReuseIdentifier = "cell"
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var mapViewHolder: GMSMapView!
@@ -22,7 +30,6 @@ class OrgPageViewController: UIViewController {
     @IBOutlet weak var followButton: UIButton!
     
     @IBAction func donateButtonPushed(_ sender: Any) {
-        print("ASFADFASDFADSF")
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
         let DonateController = storyBoard.instantiateViewController(withIdentifier: "donateView") as UIViewController
@@ -40,9 +47,7 @@ class OrgPageViewController: UIViewController {
         
         var eventTitle = titleLabel.text
         
-        ref.child("users").child(userRefId!).childByAutoId().setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString]) 
-        
-
+        ref.child("users").child(userRefId!).childByAutoId().setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
     }
     
     override func viewDidLoad() {
@@ -52,24 +57,41 @@ class OrgPageViewController: UIViewController {
         self.mapViewHolder = mapView
         
         titleLabel.text = actiontitle
-        // Do any additional setup after loading the view.
         
+        // Register the table view cell class and its reuse id
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        
+        // This view controller itself will provide the delegate methods and row data for the table view.
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        // Do any additional setup after loading the view.
     }
 
+    // number of rows in table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.animals.count
+    }
+    
+    // create a cell for each table view row
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // create a new cell if needed or reuse an old one
+        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
+        
+        // set the text from the data model
+        cell.textLabel?.text = self.animals[indexPath.row]
+        
+        return cell
+    }
+    
+    // method to run when table view cell is tapped
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You tapped cell number \(indexPath.row).")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
