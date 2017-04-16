@@ -43,11 +43,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GK8-8e-V1a">
-                                <rect key="frame" x="46" y="382" width="282" height="30"/>
+                                <rect key="frame" x="46" y="423" width="282" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign up / Log in"/>
                                 <connections>
                                     <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="A6D-GC-6Gp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2h-u7-shr">
+                                <rect key="frame" x="93" y="379" width="188" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register as an Organization"/>
+                                <connections>
+                                    <action selector="RegisterOrgButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4iH-hE-X34"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -83,8 +91,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvD-8r-WFz">
-                                <rect key="frame" x="156" y="51" width="63" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BvD-8r-WFz">
+                                <rect key="frame" x="33" y="51" width="309" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -140,12 +148,13 @@
                         <outlet property="mailTextField" destination="B4d-ZY-cK1" id="Xjr-cu-HmT"/>
                         <outlet property="passTextField" destination="7Tr-Ze-HU2" id="zSk-n3-iK0"/>
                         <outlet property="submitButton" destination="USE-ah-qoe" id="5LA-SI-CyU"/>
+                        <outlet property="titleLabel" destination="BvD-8r-WFz" id="hAk-NL-O88"/>
                         <outlet property="userTextField" destination="1aO-Qy-zXw" id="bid-Vh-Ubo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="183-pp-CCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="221"/>
+            <point key="canvasLocation" x="725.60000000000002" y="220.83958020989508"/>
         </scene>
         <!--Events-->
         <scene sceneID="BEX-Rh-mg0">

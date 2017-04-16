@@ -13,12 +13,15 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("gothere")
+        titleLabel.text = dataFromAPI;
     }
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var mailTextField: UITextField!
-    
+
+    @IBOutlet weak var titleLabel: UILabel!
+    var dataFromAPI : String = ""
+
     @IBOutlet weak var submitButton: UIButton!
     
     @IBAction func submitButton(_ sender: Any) {
