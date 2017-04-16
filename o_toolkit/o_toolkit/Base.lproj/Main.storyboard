@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="183-pp-CCz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="725.60000000000002" y="220.83958020989508"/>
+            <point key="canvasLocation" x="825" y="134"/>
         </scene>
         <!--Events-->
         <scene sceneID="BEX-Rh-mg0">
@@ -237,22 +237,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-4m-7FZ">
-                                <rect key="frame" x="165" y="533" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Donate"/>
-                                <connections>
-                                    <action selector="donateButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="fwy-nW-GtS"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
-                                <rect key="frame" x="166" y="579" width="44" height="30"/>
+                                <rect key="frame" x="279" y="617" width="44" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Follow"/>
                                 <connections>
                                     <action selector="followButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="XC2-FC-n53"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-4m-7FZ">
+                                <rect key="frame" x="51" y="617" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Donate"/>
+                                <connections>
+                                    <action selector="donateButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="fwy-nW-GtS"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySQ-Ll-zPS">
+                                <rect key="frame" x="0.0" y="352" width="375" height="257"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -268,6 +273,7 @@
                         <outlet property="donateButton" destination="V7Z-4m-7FZ" id="0T9-g3-fXN"/>
                         <outlet property="followButton" destination="tLd-9u-K2n" id="G2z-8Q-dBx"/>
                         <outlet property="mapViewHolder" destination="kC5-pn-asO" id="zgx-aa-VRZ"/>
+                        <outlet property="tableView" destination="ySQ-Ll-zPS" id="wRZ-en-3jT"/>
                         <outlet property="titleLabel" destination="uK9-um-wRL" id="9ee-UJ-jV3"/>
                     </connections>
                 </viewController>
