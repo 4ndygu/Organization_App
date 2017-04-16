@@ -13,7 +13,8 @@ class ToolTableViewController: UITableViewController {
 
     var ref: FIRDatabaseReference!
     
-    var oddNumbers = ["asdf"];
+    var oddNumbers = ["Followed Events"]
+    var keyToTitle = ["placeholder" : "thisisdumb"]
     
     func loadOddNumbers()  {
         
@@ -86,6 +87,8 @@ class ToolTableViewController: UITableViewController {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
         let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage")
+        
+        ref = FIRDatabase.database().reference()
         
         //DashController.actiontitle = oddNumbers[indexPath.row]
         self.present(DashController, animated:true, completion:nil)

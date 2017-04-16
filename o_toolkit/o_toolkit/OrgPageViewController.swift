@@ -29,6 +29,8 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var donateButton: UIButton!
     @IBOutlet weak var followButton: UIButton!
     
+    var orgID = ""
+    
     @IBAction func donateButtonPushed(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
@@ -45,9 +47,9 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let userRefId = FIRAuth.auth()?.currentUser?.uid
         
-        var eventTitle = titleLabel.text
+        let eventTitle = titleLabel.text
         
-        ref.child("users").child(userRefId!).childByAutoId().setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
+        ref.child("users").child(userRefId!).child("following").child(orgID).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
     }
     
     override func viewDidLoad() {

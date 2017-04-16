@@ -38,11 +38,14 @@ class AddEventViewController: UIViewController {
         
         var ref = FIRDatabase.database().reference()
         
-        ref.child("actions").child(title!).setValue(["title": title,
+        let key = ref.child("actions").childByAutoId().key
+        let post = ["title": title,
                       "start": start,
                       "time": time,
                       "end": end,
-                      "desc": desc]);
+                      "desc": desc];
+        let childUpdates = ["/actions/\(key)": post]
+        ref.updateChildValues(childUpdates)
 
         
         
