@@ -50,7 +50,28 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let eventTitle = titleLabel.text
         
-        ref.child("users").child(userRefId!).child("following").child(orgID).setValue(["title": orgTitle as! NSString, "time": "getDate" as! NSString])
+        if(followButton.titleLabel?.text == "Follow")
+        {
+       
+            var eventTitle = titleLabel.text
+            
+            ref.child("users").child(userRefId!).child("following").child(orgID).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
+
+        
+            followButton.setTitle("Unfollow", for: .normal)
+        
+        }
+        else if(followButton.titleLabel?.text == "Unfollow")
+        {
+            followButton.setTitle("Follow", for: .normal)
+            
+             let userRefId = FIRAuth.auth()?.currentUser?.uid
+            
+            ref.child("users").child(userRefId!).child("following").child("orgID").removeValue()
+        }
+    
+    
+    
     }
     
     override func viewDidLoad() {
