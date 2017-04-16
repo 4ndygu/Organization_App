@@ -48,8 +48,14 @@ class SignUpController: UIViewController {
                     ref = FIRDatabase.database().reference()
                     let userID = FIRAuth.auth()?.currentUser?.uid
 
-                    ref.child("users").child(userID!).setValue(["donttouch": "0"])
-
+                    if self.dataFromAPI == "Register Organization"
+                    {
+                        ref.child("users").child(userID!).setValue(["org": "1"])
+                    }
+                    else
+                    {
+                        ref.child("users").child(userID!).setValue(["org": "0"])
+                    }
                     
                     let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
                     
