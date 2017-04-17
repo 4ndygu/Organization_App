@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         GMSServices.provideAPIKey("AIzaSyDb-WaJ15vnHpPKUN9ggEzJPZELKVmqmC0")
-        print("Google Maps API Works!")
         
         // Do any additional setup after loading the view, typically from a nib.
     }

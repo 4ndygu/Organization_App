@@ -77,32 +77,41 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        var ref = FIRDatabase.database().reference()
-//
-//        var gps1 = "";
-//        var gps2 = "";
-//        
-//        // look for everything given ID
-//        ref.child("actions").queryOrdered(byChild: "title").queryStarting(atValue: actiontitle).observe(.value, with: { snapshot in
-//            for u in snapshot.children{
-//                
-//                gps1 = ((u as AnyObject).childSnapshot("start").value as? String)!;
-//                gps2 = ((u as AnyObject).childSnapshot("end").value as? String)!
-//                
-//            }
-//        })
-//        
-//        let gpsStartArr = gps1.componentsSeparatedByString(" ")
-//        var centerGPS = gpsStartArr[0];
-//        var centerGPS2 = gpsStartArr[1];
+        var ref = FIRDatabase.database().reference()
 
+        var gps1 = "";
+        var gps2 = "";
         
-        let camera = GMSCameraPosition.camera(withLatitude: centerGPS, longitude: centerGPS2, zoom: 12)
-        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        self.mapViewHolder = mapView
+        // look for everything given ID
+        ref.child("actions").child(actiontitle).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            let value = snapshot.value as? NSDictionary
+            let actualTitle = value?["title"] as! String
+            let actualGPS = value?["start"] as! String
+
+            self.titleLabel.text = actualTitle
+
+            let gpsStartArr = actualGPS.components(separatedBy: " ")
+            
+            let centerGPS = CLLocationDegrees(Int(gpsStartArr[0])!);
+            let centerGPS2 = CLLocationDegrees(Int(gpsStartArr[1])!);
+
+            let camera = GMSCameraPosition.camera(withLatitude: 0, longitude: 0, zoom: 4)
+            let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+            
+            let position = CLLocationCoordinate2D(latitude: centerGPS, longitude: centerGPS2)
+            let marker = GMSMarker(position: position)
+            marker.title = "Start"
+            marker.map = mapView
+
+            self.mapViewHolder = mapView
+            
+            
+            self.tableView.reloadData()
+
+        })
         
-        titleLabel.text = actiontitle
-        
+
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         

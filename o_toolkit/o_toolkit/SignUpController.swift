@@ -15,6 +15,8 @@ class SignUpController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         titleLabel.text = dataFromAPI;
     }
+    
+    
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var mailTextField: UITextField!

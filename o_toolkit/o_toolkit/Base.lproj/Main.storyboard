@@ -159,18 +159,27 @@
         <!--Events-->
         <scene sceneID="BEX-Rh-mg0">
             <objects>
-                <tableViewController id="wUS-YG-W2d" customClass="ToolTableViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tooltable" id="wUS-YG-W2d" customClass="ToolTableViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" id="BCm-M2-mWl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="protocell" rowHeight="67" id="4Hb-kp-hIJ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="protocell" textLabel="n30-6N-0eh" rowHeight="67" style="IBUITableViewCellStyleDefault" id="4Hb-kp-hIJ">
                                 <rect key="frame" x="0.0" y="28" width="375" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Hb-kp-hIJ" id="6tW-CG-3pp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n30-6N-0eh">
+                                            <rect key="frame" x="15" y="0.0" width="345" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -442,7 +451,7 @@
             <objects>
                 <navigationController storyboardIdentifier="maindash" automaticallyAdjustsScrollViewInsets="NO" id="tPH-Eh-eOE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7lo-rs-r0M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7lo-rs-r0M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -518,7 +527,7 @@
             <objects>
                 <navigationController storyboardIdentifier="orgpage" automaticallyAdjustsScrollViewInsets="NO" id="Cfx-xf-xNp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1HW-mm-zUW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1HW-mm-zUW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

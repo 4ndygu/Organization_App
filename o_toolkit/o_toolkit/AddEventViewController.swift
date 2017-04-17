@@ -49,7 +49,7 @@ class AddEventViewController: UIViewController {
 
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         
-        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "ToolTable") as! ToolTableViewController
+        let resultViewController = storyBoard.instantiateViewController(withIdentifier: "tooltable") as! ToolTableViewController
         
         self.present(resultViewController, animated:true, completion:nil)
 

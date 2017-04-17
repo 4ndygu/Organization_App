@@ -15,38 +15,62 @@ class ToolTableViewController: UITableViewController {
     
     var oddNumbers = Dictionary<String,String>()
     
+    var oddNumbersIndexed = [String]()
+    var oddNumbersFollowedIndex = [String]()
+    let section = ["events you followed", "events near you"]
+    
+    // zero is followed, one is all
+    var StorageForTwoLists = Array<Array<String>>()
+    
+    
     func loadOddNumbers()  {
+        ref = FIRDatabase.database().reference().child("actions")
+//        let userRefId = FIRAuth.auth()?.currentUser?.uid
+//
+//        ref = ref.child("users").child(userRefId!).child("following")
+//        
+//        ref.observeSingleEvent(of: .value, with: {
+//            snapshot in
+//            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+//                //let title = rest.value!["title"] as? String
+//                let title = rest.childSnapshot(forPath: "title").value as? String
+//                let key = rest.key as? String
+//                self.oddNumbers[title!] = key!
+//                self.oddNumbersIndexed.append(title!);
+//            }
+//            
+//            DispatchQueue.main.async{
+//                self.tableView.reloadData()
+//            }
+//        })
         
-        ref = FIRDatabase.database().reference()
-        let userRefId = FIRAuth.auth()?.currentUser?.uid
-
-        ref = ref.child("users").child(userRefId!).child("following")
+        var totalArray = Array<String>()
+        var followArray = Array<String>()
+        StorageForTwoLists.append(followArray)
+        StorageForTwoLists.append(totalArray)
         
-        ref.observeSingleEvent(of: .value, with: {
-            snapshot in
-            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                //let title = rest.value!["title"] as? String
-                let title = rest.childSnapshot(forPath: "title").value as? String
-                let key = rest.key as? String
-                self.oddNumbers[title!] = key!
-            }
+        ref.observeSingleEvent(of: .value, with: { snapshot in
             
-            DispatchQueue.main.async{
+            if snapshot.childrenCount > 0 {
+                
+                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    guard (rest.value as? [String: AnyObject]) != nil else {
+                        continue
+                    }
+                    let title = rest.childSnapshot(forPath: "title").value as? String
+               
+                    let key = rest.key as? String
+                    self.oddNumbers[title!] = key!
+                    self.oddNumbersIndexed.append(title!);
+                    self.StorageForTwoLists[1].append(title!);
+                }
                 self.tableView.reloadData()
             }
         })
-        
-//        let userRefId = FIRAuth.auth()?.currentUser?.uid
-//        var ref2 = FIRDatabase.database().reference().child("users").child(userRefId!).child("following")
-//        
-//        ref2.observe(.value, with: { snapshot in
-//            for child in snapshot.children {
-//                print("child ------")
-//                print(child)
-//                
-//            }
-//        })
 
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -55,14 +79,12 @@ class ToolTableViewController: UITableViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
-        loadOddNumbers();
-        
-        print(oddNumbers);
-        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        
+        loadOddNumbers();
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,17 +96,18 @@ class ToolTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 2;
+        print("SECTION COUNT " + String(section.count))
+        return section.count;
     }
     
     func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
-        return "ASDF";
+        return self.section[section];
     }
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return oddNumbers.count;
+        return self.oddNumbersIndexed.count;
     }
 
     
@@ -93,14 +116,14 @@ class ToolTableViewController: UITableViewController {
         
         // Configure the cell...
         //let item = oddNumbers[indexPath.row]
-        let key = Array(oddNumbers.keys)[indexPath.row] // or .first
+        _ = Array(oddNumbers.keys)[indexPath.row] // or .first
         
-        cell.textLabel?.text = key
+        cell.textLabel?.text = Array(oddNumbers.keys)[indexPath.row]
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let row = indexPath.row
+        _ = indexPath.row
         //CODE TO BE RUN ON CELL TOUCH
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -108,7 +131,7 @@ class ToolTableViewController: UITableViewController {
         let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
         let childViewController = DashController.topViewController as! OrgPageViewController
         
-        childViewController.actiontitle = oddNumbers[indexPath.row]
+        childViewController.actiontitle = oddNumbers[oddNumbersIndexed[indexPath.row]]!
         self.present(DashController, animated:true, completion:nil)
     }
 
