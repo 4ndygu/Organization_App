@@ -97,16 +97,31 @@ class ToolTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        print("section count: " + String(section.count))
         return section.count;
     }
     
-    func tableView( tableView : UITableView,  titleForHeaderInSection section: Int)->String {
+
+    override func tableView(_ tableView: UITableView,
+        titleForHeaderInSection section: Int) -> String?    {
+        print(self.section[section]);
         return self.section[section];
     }
 
 
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return 44
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("huh:" + String(self.StorageForTwoLists[section].count))
+
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+
         return self.StorageForTwoLists[section].count;
     }
 
@@ -116,7 +131,7 @@ class ToolTableViewController: UITableViewController {
         
         // Configure the cell...
         //let item = oddNumbers[indexPath.row]
-        
+        print("file is: " + self.StorageForTwoLists[indexPath.section][indexPath.row]);
         cell.textLabel?.text = self.StorageForTwoLists[indexPath.section][indexPath.row];
         return cell
     }
