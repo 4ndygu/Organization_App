@@ -63,6 +63,7 @@ class ToolTableViewController: UITableViewController {
                     self.oddNumbers[title!] = key!
                     self.oddNumbersIndexed.append(title!);
                     self.StorageForTwoLists[1].append(title!);
+                    self.StorageForTwoLists[0].append(title!);
                 }
                 self.tableView.reloadData()
             }
@@ -96,7 +97,6 @@ class ToolTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print("SECTION COUNT " + String(section.count))
         return section.count;
     }
     
@@ -107,7 +107,7 @@ class ToolTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.oddNumbersIndexed.count;
+        return self.StorageForTwoLists[section].count;
     }
 
     
@@ -116,9 +116,8 @@ class ToolTableViewController: UITableViewController {
         
         // Configure the cell...
         //let item = oddNumbers[indexPath.row]
-        _ = Array(oddNumbers.keys)[indexPath.row] // or .first
         
-        cell.textLabel?.text = Array(oddNumbers.keys)[indexPath.row]
+        cell.textLabel?.text = self.StorageForTwoLists[indexPath.section][indexPath.row];
         return cell
     }
     
