@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 
 class ToolTableViewController: UITableViewController {
 
@@ -63,6 +64,27 @@ class ToolTableViewController: UITableViewController {
                     self.oddNumbers[title!] = key!
                     self.oddNumbersIndexed.append(title!);
                     self.StorageForTwoLists[1].append(title!);
+                }
+                self.tableView.reloadData()
+            }
+        })
+        
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        print("userid: " + String(describing: uid))
+        ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
+        ref.observeSingleEvent(of: .value, with: { snapshot in
+            
+            if snapshot.childrenCount > 0 {
+                
+                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                    guard (rest.value as? [String: AnyObject]) != nil else {
+                        continue
+                    }
+                    let title = rest.childSnapshot(forPath: "title").value as? String
+                    
+                    let key = rest.key as? String
+                    self.oddNumbers[title!] = key!
+                    self.oddNumbersIndexed.append(title!);
                     self.StorageForTwoLists[0].append(title!);
                 }
                 self.tableView.reloadData()
@@ -140,13 +162,13 @@ class ToolTableViewController: UITableViewController {
         _ = indexPath.row
         //CODE TO BE RUN ON CELL TOUCH
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        
-        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
-        let childViewController = DashController.topViewController as! OrgPageViewController
-        
-        childViewController.actiontitle = oddNumbers[oddNumbersIndexed[indexPath.row]]!
-        self.present(DashController, animated:true, completion:nil)
+//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        
+//        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
+//        let childViewController = DashController.topViewController as! OrgPageViewController
+//        
+//        childViewController.actiontitle = oddNumbers[oddNumbersIndexed[indexPath.row]]!
+//        self.present(DashController, animated:true, completion:nil)
     }
 
     @IBAction func addEvent(segue:UIStoryboardSegue) {
