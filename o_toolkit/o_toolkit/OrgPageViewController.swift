@@ -99,11 +99,9 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
         var gps2 = "";
         
         // look for everything given ID
-        dump(actiontitle)
         ref.child("actions").child(actiontitle).observeSingleEvent(of: .value, with: { (snapshot) in
             
             let value = snapshot.value as? NSDictionary
-            dump(value)
             let actualTitle = value?["title"] as! String
             let actualGPS = value?["start"] as! String
 
