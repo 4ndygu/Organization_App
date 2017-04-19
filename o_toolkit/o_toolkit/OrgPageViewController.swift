@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import MapKit
 import Firebase
 
 class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -20,6 +21,8 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     // cell reuse id (cells that scroll out of view can be reused)
     let cellReuseIdentifier = "cell"
     
+    @IBOutlet weak var mapView: MKMapView!
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -31,6 +34,18 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var orgID = "123"
     var orgTitle = "defaultTitle"
+    
+    
+    //this constant determines the radius is 1km = 1000m
+    let regionRadius: CLLocationDistance = 1000
+    
+    //this function centers the map on the location you want
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
     
     @IBAction func donateButtonPushed(_ sender: Any) {
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
@@ -111,6 +126,8 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         })
         
+        
+        
 
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
@@ -120,6 +137,15 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
 
         // Do any additional setup after loading the view.
+        
+        print("here")
+    
+        let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
+        
+        centerMapOnLocation(location: initialLocation)
+        
+        
+    
     }
 
     // number of rows in table view

@@ -20,7 +20,9 @@ class AddEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //   StartBox.setTitle("Street Address", forState: .Normal)
+        
         // Do any additional setup after loading the view.
     }
 
