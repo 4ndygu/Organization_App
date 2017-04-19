@@ -162,13 +162,13 @@ class ToolTableViewController: UITableViewController {
         _ = indexPath.row
         //CODE TO BE RUN ON CELL TOUCH
         
-//        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        
-//        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
-//        let childViewController = DashController.topViewController as! OrgPageViewController
-//        
-//        childViewController.actiontitle = oddNumbers[oddNumbersIndexed[indexPath.row]]!
-//        self.present(DashController, animated:true, completion:nil)
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let DashController = storyBoard.instantiateViewController(withIdentifier: "orgpage") as! UINavigationController
+        let childViewController = DashController.topViewController as! OrgPageViewController
+        
+        childViewController.actiontitle = oddNumbers[self.StorageForTwoLists[indexPath.section][indexPath.row]]!
+        self.present(DashController, animated:true, completion:nil)
     }
 
     @IBAction func addEvent(segue:UIStoryboardSegue) {
