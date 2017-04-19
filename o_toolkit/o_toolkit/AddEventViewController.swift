@@ -12,9 +12,21 @@ import Firebase
 class AddEventViewController: UIViewController {
 
     @IBOutlet weak var titleBox: UITextField!
+    
+    
     @IBOutlet weak var StartBox: UITextField!
-    @IBOutlet weak var timeBox: UITextField!
     @IBOutlet weak var endBox: UITextField!
+    
+    
+    
+    @IBOutlet weak var startStreetAddress: UITextField!
+    @IBOutlet weak var startCityZip: UITextField!
+    @IBOutlet weak var endStreetAddress: UITextField!
+    @IBOutlet weak var endCityZip: UITextField!
+    @IBOutlet weak var timeBox: UITextField!
+    
+    
+    
     @IBOutlet weak var descBox: UITextView!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -37,6 +49,11 @@ class AddEventViewController: UIViewController {
         var time = timeBox.text
         var end = endBox.text
         var desc = descBox.text
+        
+        /*
+         TO BE REPLACED with the proper textboxes once the appropriate changes to the database have been made
+ 
+        */
         
         var ref = FIRDatabase.database().reference()
         
