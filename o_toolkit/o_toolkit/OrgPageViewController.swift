@@ -10,6 +10,7 @@ import UIKit
 import GoogleMaps
 import MapKit
 import Firebase
+import CoreLocation
 
 class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -142,7 +143,20 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         
-        centerMapOnLocation(location: initialLocation)
+        
+        let address = "1 Infinite Loop, CA, USA"
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+            if((error) != nil){
+                print("Error", error)
+            }
+            if let placemark = placemarks?.first {
+                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                print(initialLocation)
+                self.centerMapOnLocation(location: initialLocation)            }
+        })
+       
         
         
     
