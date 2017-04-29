@@ -23,6 +23,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var logoLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var wrongCredentialLabel: UILabel!
+    
+    @IBOutlet weak var signUpButton: UIButton!
+    /*
+ 
+   Note to self (not related to this code): only orgs can create event, add that to org "events you own"
+ */
     
     @IBAction func RegisterOrgButton(_ sender: Any) {
         if (nameTextField.text == "" && passTextField.text == "") {
@@ -49,7 +56,13 @@ class ViewController: UIViewController {
                 
 
                 if (user == nil) {
-                    self.loginButton.setTitle("Wrong Credentials!", for: .normal);
+                    
+                    self.wrongCredentialLabel.text = "Wrong credentials!";
+                    
+                    self.nameTextField.text = "";
+                    
+                    self.passTextField.text = "";
+                    
                     return
                 }
                 
@@ -63,25 +76,25 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func signUpButton(_ sender: Any)
+    {
+        
+        logoLabel.text = "sign up";
+        
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        
+        let SignUpController = storyBoard.instantiateViewController(withIdentifier: "signup") as! SignUpController
+        
+        SignUpController.dataFromAPI = "Register User"
+        
+        self.present(SignUpController, animated:true, completion:nil)
+    }
+
     @IBAction func loginButton(_ sender: Any) {
 
-        if (nameTextField.text == "" && passTextField.text == "") {
-            logoLabel.text = "sign up";
-            
-            var ref: FIRDatabaseReference!
-            ref = FIRDatabase.database().reference()
-
-            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-
-            let SignUpController = storyBoard.instantiateViewController(withIdentifier: "signup") as! SignUpController
-            
-            SignUpController.dataFromAPI = "Register User"
-            
-            self.present(SignUpController, animated:true, completion:nil)
-
-
-        } else {
-            
             let email = nameTextField.text!;
             let password = passTextField.text!;
 
@@ -89,7 +102,9 @@ class ViewController: UIViewController {
                 
                 print(user)
                 if (user == nil) {
-                    self.loginButton.setTitle("Wrong Credentials!", for: .normal);
+                    
+                   
+                    self.wrongCredentialLabel.text = "Wrong Credentials!";
                     return
                 }
                 
@@ -99,7 +114,7 @@ class ViewController: UIViewController {
                 let DashController = storyBoard.instantiateViewController(withIdentifier: "maindash")
                 
                 self.present(DashController, animated:true, completion:nil)
-            }
+            //}
         }
     }
     
