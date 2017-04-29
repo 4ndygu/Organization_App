@@ -23,7 +23,7 @@ class ToolTableViewController: UITableViewController {
     // zero is followed, one is all
     var StorageForTwoLists = Array<Array<String>>()
     
-    var isOrg = 0
+    var isOrg = ""
     
     func loadOddNumbers()  {
         //find uses is org
@@ -34,7 +34,9 @@ class ToolTableViewController: UITableViewController {
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            self.isOrg = value?["org"] as? Int ?? 0
+            print("asdfasdfasdfasdf")
+            self.isOrg = value?["org"] as! String
+            print(self.isOrg)
         }) { (error) in
             print(error.localizedDescription)
         }
@@ -68,8 +70,9 @@ class ToolTableViewController: UITableViewController {
             }
         })
         
-        if (isOrg == 1) {
-            
+        if (isOrg == "1") {
+            print("IS AN ORG")
+            self.view.backgroundColor = UIColor.red
         } else {
             ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
             
