@@ -73,7 +73,7 @@ class AddEventViewController: UIViewController {
         self.present(resultViewController, animated:true, completion:nil)
         
         let uid = FIRAuth.auth()?.currentUser?.uid
-        ref.child("users").child(uid!).child("owned").child(title!).setValue(post)
+        ref.child("users").child(uid!).child("owned").child(key).setValue(post)
 
         
     }
