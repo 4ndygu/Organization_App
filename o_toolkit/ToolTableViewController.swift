@@ -23,24 +23,12 @@ class ToolTableViewController: UITableViewController {
     // zero is followed, one is all
     var StorageForTwoLists = Array<Array<String>>()
     
-    var isOrg = 0
+    var isOrg = ""
     
     func loadOddNumbers()  {
         //find uses is org
         let uid = FIRAuth.auth()?.currentUser?.uid
         print("userid: " + String(describing: uid))
-        
-        ref = FIRDatabase.database().reference().child("users").child(uid!)
-        ref.observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            self.isOrg = value?["org"] as? Int ?? 0
-        }) { (error) in
-            print(error.localizedDescription)
-        }
-        
-        print("FUCK")
-        print(isOrg)
         
         ref = FIRDatabase.database().reference().child("actions")
         
@@ -68,20 +56,50 @@ class ToolTableViewController: UITableViewController {
             }
         })
         
-        if (isOrg == 1) {
-            
-        } else {
-            ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
+        DispatchQueue.main.async{
+            self.tableView.reloadData()
+        }
+    }
+    
+    func loadOddNumbers2() {
+        let uid = FIRAuth.auth()?.currentUser?.uid
+
+        print("CHECKING TO RUN")
+    
+        if (isOrg == "1") {
+            self.view.backgroundColor = UIColor.red
+            ref = FIRDatabase.database().reference().child("users").child(uid!).child("owned")
             
             ref.observeSingleEvent(of: .value, with: { snapshot in
                 if snapshot.childrenCount > 0 {
-                
+                    
                     for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
                         guard (rest.value as? [String: AnyObject]) != nil else {
                             continue
                         }
                         let title = rest.childSnapshot(forPath: "title").value as? String
-                    
+                        
+                        let key = rest.key as? String
+                        self.oddNumbers[title!] = key!
+                        self.oddNumbersIndexed.append(title!);
+                        self.StorageForTwoLists[0].append(title!);
+                    }
+                    self.tableView.reloadData()
+                }
+            })
+
+        } else {
+            ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
+    
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                if snapshot.childrenCount > 0 {
+    
+                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        guard (rest.value as? [String: AnyObject]) != nil else {
+                            continue
+                        }
+                        let title = rest.childSnapshot(forPath: "title").value as? String
+    
                         let key = rest.key as? String
                         self.oddNumbers[title!] = key!
                         self.oddNumbersIndexed.append(title!);
@@ -91,7 +109,7 @@ class ToolTableViewController: UITableViewController {
                 }
             })
         }
-
+        
         DispatchQueue.main.async{
             self.tableView.reloadData()
         }
@@ -108,6 +126,21 @@ class ToolTableViewController: UITableViewController {
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            print("asdfasdfasdfasdf")
+            self.isOrg = value?["org"] as! String
+            print(self.isOrg)
+            self.loadOddNumbers2()
+            self.tableView.reloadData()
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+
+        
         loadOddNumbers();
     }
 
@@ -120,14 +153,12 @@ class ToolTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        print("section count: " + String(section.count))
         return section.count;
     }
     
 
     override func tableView(_ tableView: UITableView,
         titleForHeaderInSection section: Int) -> String?    {
-        print(self.section[section]);
         return self.section[section];
     }
 
@@ -140,8 +171,6 @@ class ToolTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print("huh:" + String(self.StorageForTwoLists[section].count))
-
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
 
@@ -154,7 +183,6 @@ class ToolTableViewController: UITableViewController {
         
         // Configure the cell...
         //let item = oddNumbers[indexPath.row]
-        print("file is: " + self.StorageForTwoLists[indexPath.section][indexPath.row]);
         cell.textLabel?.text = self.StorageForTwoLists[indexPath.section][indexPath.row];
         return cell
     }

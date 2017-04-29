@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="136.28185907046478"/>
+            <point key="canvasLocation" x="-9" y="46"/>
         </scene>
         <!--Sign Up Controller-->
         <scene sceneID="wCb-qH-qEu">
@@ -270,19 +270,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLd-9u-K2n">
-                                <rect key="frame" x="279" y="617" width="44" height="30"/>
+                                <rect key="frame" x="222" y="613" width="116" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Follow"/>
                                 <connections>
                                     <action selector="followButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="XC2-FC-n53"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-4m-7FZ">
-                                <rect key="frame" x="51" y="617" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Donate"/>
-                                <connections>
-                                    <action selector="donateButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="fwy-nW-GtS"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ySQ-Ll-zPS">
@@ -290,6 +282,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V7Z-4m-7FZ">
+                                <rect key="frame" x="59" y="617" width="50" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Donate"/>
+                                <connections>
+                                    <action selector="donateButtonPushed:" destination="FQM-4U-6HA" eventType="touchUpInside" id="fwy-nW-GtS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -542,7 +542,7 @@
         <!--Donate View Controller-->
         <scene sceneID="gMe-ZB-g6B">
             <objects>
-                <viewController storyboardIdentifier="donateView" id="Zmm-7s-fbA" customClass="DonateViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Zmm-7s-fbA" customClass="DonateViewController" customModule="o_toolkit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lQu-CF-VSf"/>
                         <viewControllerLayoutGuide type="bottom" id="j0l-dI-cTi"/>
@@ -583,6 +583,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="e7m-ow-vYJ">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="dCE-HX-siU"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="donateButton" destination="HwN-Dw-IlJ" id="vGU-oJ-XpU"/>
                         <outlet property="donateTextField" destination="Rmr-db-Paz" id="eBp-rX-p45"/>
@@ -590,7 +593,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e4O-jV-MSq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3144.8000000000002" y="-566.26686656671666"/>
+            <point key="canvasLocation" x="4015.1999999999998" y="-562.66866566716647"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="xSu-tZ-Lrh">
@@ -608,10 +611,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EIq-M5-ouM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3143.1999999999998" y="138.98050974512745"/>
+            <point key="canvasLocation" x="3206" y="178"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Csu-3n-6vf">
+            <objects>
+                <navigationController storyboardIdentifier="donateView" automaticallyAdjustsScrollViewInsets="NO" id="NPa-Fo-Adf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4uB-7r-E7y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Zmm-7s-fbA" kind="relationship" relationship="rootViewController" id="n2T-o9-r1f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A8D-ha-3iW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3076" y="-562.66866566716647"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="d4M-FJ-p88"/>
+        <segue reference="xZr-fV-MUD"/>
     </inferredMetricsTieBreakers>
 </document>
