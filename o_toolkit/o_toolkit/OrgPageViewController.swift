@@ -71,7 +71,7 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
        
             var eventTitle = titleLabel.text
             
-            ref.child("users").child(userRefId!).child("following").child(actiontitle).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
+        ref.child("users").child(userRefId!).child("following").child(actiontitle).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
 
         
             followButton.setTitle("Unfollow", for: .normal)

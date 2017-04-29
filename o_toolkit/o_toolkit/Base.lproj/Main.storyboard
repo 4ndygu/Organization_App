@@ -504,7 +504,7 @@
             <objects>
                 <navigationController storyboardIdentifier="maindash" automaticallyAdjustsScrollViewInsets="NO" id="tPH-Eh-eOE" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7lo-rs-r0M">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="7lo-rs-r0M">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -583,7 +583,7 @@
             <objects>
                 <navigationController storyboardIdentifier="orgpage" automaticallyAdjustsScrollViewInsets="NO" id="Cfx-xf-xNp" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1HW-mm-zUW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1HW-mm-zUW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -601,7 +601,7 @@
             <objects>
                 <navigationController storyboardIdentifier="donateView" automaticallyAdjustsScrollViewInsets="NO" id="NPa-Fo-Adf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4uB-7r-E7y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="4uB-7r-E7y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
