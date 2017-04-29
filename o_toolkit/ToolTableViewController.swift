@@ -23,27 +23,28 @@ class ToolTableViewController: UITableViewController {
     // zero is followed, one is all
     var StorageForTwoLists = Array<Array<String>>()
     
+    var isOrg = ""
     
     func loadOddNumbers()  {
+        //find uses is org
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        print("userid: " + String(describing: uid))
+        
+        ref = FIRDatabase.database().reference().child("users").child(uid!)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            print("asdfasdfasdfasdf")
+            self.isOrg = value?["org"] as! String
+            print(self.isOrg)
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        print("FUCK")
+        print(isOrg)
+        
         ref = FIRDatabase.database().reference().child("actions")
-//        let userRefId = FIRAuth.auth()?.currentUser?.uid
-//
-//        ref = ref.child("users").child(userRefId!).child("following")
-//        
-//        ref.observeSingleEvent(of: .value, with: {
-//            snapshot in
-//            for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-//                //let title = rest.value!["title"] as? String
-//                let title = rest.childSnapshot(forPath: "title").value as? String
-//                let key = rest.key as? String
-//                self.oddNumbers[title!] = key!
-//                self.oddNumbersIndexed.append(title!);
-//            }
-//            
-//            DispatchQueue.main.async{
-//                self.tableView.reloadData()
-//            }
-//        })
         
         var totalArray = Array<String>()
         var followArray = Array<String>()
@@ -69,27 +70,30 @@ class ToolTableViewController: UITableViewController {
             }
         })
         
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        print("userid: " + String(describing: uid))
-        ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
-        ref.observeSingleEvent(of: .value, with: { snapshot in
+        if (isOrg == "1") {
+            print("IS AN ORG")
+            self.view.backgroundColor = UIColor.red
+        } else {
+            ref = FIRDatabase.database().reference().child("users").child(uid!).child("following")
             
-            if snapshot.childrenCount > 0 {
+            ref.observeSingleEvent(of: .value, with: { snapshot in
+                if snapshot.childrenCount > 0 {
                 
-                for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
-                    guard (rest.value as? [String: AnyObject]) != nil else {
-                        continue
-                    }
-                    let title = rest.childSnapshot(forPath: "title").value as? String
+                    for rest in snapshot.children.allObjects as! [FIRDataSnapshot] {
+                        guard (rest.value as? [String: AnyObject]) != nil else {
+                            continue
+                        }
+                        let title = rest.childSnapshot(forPath: "title").value as? String
                     
-                    let key = rest.key as? String
-                    self.oddNumbers[title!] = key!
-                    self.oddNumbersIndexed.append(title!);
-                    self.StorageForTwoLists[0].append(title!);
+                        let key = rest.key as? String
+                        self.oddNumbers[title!] = key!
+                        self.oddNumbersIndexed.append(title!);
+                        self.StorageForTwoLists[0].append(title!);
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
-            }
-        })
+            })
+        }
 
         DispatchQueue.main.async{
             self.tableView.reloadData()
