@@ -71,7 +71,7 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
        
             var eventTitle = titleLabel.text
             
-            ref.child("users").child(userRefId!).child("following").child(orgID).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
+            ref.child("users").child(userRefId!).child("following").child(actiontitle).setValue(["title": eventTitle as! NSString, "time": "getDate" as! NSString])
 
         
             followButton.setTitle("Unfollow", for: .normal)
@@ -83,7 +83,7 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
             
              let userRefId = FIRAuth.auth()?.currentUser?.uid
             
-            ref.child("users").child(userRefId!).child("following").child("orgID").removeValue()
+            ref.child("users").child(userRefId!).child("following").child(actiontitle).removeValue()
         }
     
     
@@ -127,6 +127,17 @@ class OrgPageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         })
         
+        //check if user already following
+        let userRefId = FIRAuth.auth()?.currentUser?.uid
+        
+        ref.child("users").child(userRefId!).child("following").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.hasChild(self.actiontitle){
+                
+                self.followButton.setTitle("Unfollow", for: .normal)
+                
+            }
+        })
+
         
         
 
